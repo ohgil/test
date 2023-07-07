@@ -1,11 +1,4 @@
-<h2 class="border-bottom py-2" th:text="${article.subject}"></h2>
-<div>
-    <div>
-        <div th:text="${article.content}"></div>
-        <div>
-            <div>
-                <div th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></div>
-            </div>
-        </div>
-    </div>
-</div>
+<h2 class="subject" th:text="${article.subject}"></h2>
+<div class="content" th:text="${article.content}" ></div>
+<div class="createDate" th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></div>
+<a class="btn" th:href="@{/article/list}">목록으로</a>
