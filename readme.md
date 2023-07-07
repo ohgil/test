@@ -40,6 +40,7 @@ public class ArticleController {
     }
 
 }
+
 3. Constructor based Injection
 생성자를 사용하여 의존성을 주입하는 방식.
 lombok은 final로 선언된 필드로 생성자를 만들어줌
