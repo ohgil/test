@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.article;
 
 import lombok.Getter;
 import lombok.Setter;
