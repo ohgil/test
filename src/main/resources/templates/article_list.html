@@ -1,61 +1,26 @@
-<table class="table">
-    <thead class="table-dark">
-    <tr>
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성일시</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="article, loop : ${articleList}">
-        <td th:text="${loop.count}"></td>
-        <td>
-            <a th:href="@{|/article/detail/${article.id}|}" th:text="${article.subject}"></a>
-        </td>
-        <td th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></td>
-    </tr>
-    </tbody>
-</table>
-<a th:href="@{/article/create}" class="btn btn-primary">게시글 등록하기</a>
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" class="container my-3">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="article, loop : ${articleList}">
+            <td th:text="${loop.count}"></td>
+            <td>
+                <a th:href="@{|/article/detail/${article.id}|}" th:text="${article.subject}"></a>
+            </td>
+            <td><span th:if="${article.author != null}" th:text="${article.author.username}"></span></td>
+            <td th:text="${#temporals.format(article.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/article/create}" class="btn btn-primary">게시글 등록하기</a>
+</div>
+</html>
 
-
-<style>
-    .table {
-      width: 1000px;
-      border-collapse: collapse;
-    }
-    .table th,
-    .table td {
-      padding: 7px;
-      border: 1px solid #ddd;
-      text-align: center;
-    }
-    .table th {
-      background-color: #212529;
-      color: #fff;
-    }
-    .table a {
-      text-decoration: none;
-      color: #0d6efd;
-    }
-    .btn-container {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 10px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: #0d6efd;
-      color: #fff;
-      border-radius: 4px;
-      text-decoration: none;
-    }
-    .btn-primary {
-      background-color: #0d6efd;
-      color: #fff;
-    }
-    .btn-primary:hover {
-      background-color: #0b5ed7;
-    }
-  </style>

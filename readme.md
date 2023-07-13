@@ -5,55 +5,20 @@
 - [X] 등록이 되면 해당 게시글 상세 페이지로 리다이렉트 된다. 해당 경로는 http://주소:포트/article/detail/{id} 가 된다.
 - [X] 게시글 상세 페이지에는 목록 버튼이 있다. 목록 버튼을 누르면 게시글 리스트 페이지로 이동하게 된다.
 
+# 2차 요구사항
+- [X] 게시글 상세페이지(http://주소:포트/article/detail/{id})에 수정 버튼이 있다. 수정 버튼을 누르면 게시글을 수정 할 수 있는 폼이나 오고 수정이 가능하다.
+- [x] 게시글 상세페이지에 삭제 버튼이 있다. 삭제 버튼을 누르면 게시글이 삭제가 된다. 삭제 후 리스트 페이지로 리다이렉트 된다.
+- [x] 모든 페이지 상단에 루트 디렉토리로 이동하는 버튼이 있다.(예: 로고)
+- [x] 모든 페이지 상단에 로그인 상태 표시하는 버튼이 있다.(예: 로그인 / 로그아웃)
+- [x] 로그인 버튼을 누르면 로그인 폼으로 이동한다.
+    - [x] 로그인 페이지는 사용자 이메일과 비밀번호를 입력하는 폼으로 구성되고 로그인 버튼을 누르면 데이터 검증 후 로그인이 된다.
+- [x] 로그아웃 버튼을 누르면 로그아웃이 된다.
+- [x] 모든 페이지 회원가입 버튼이 있다. 버튼을 누르면 회원가입 폼으로 이동한다.
+    - [x] 회원가입 폼은 이메일, 닉네임, 비빌번호, 비밀번호 확인으로 구성된다. 회원가입 버튼을 누르면 데이터 검증 후 회원가입이 된다.
+- [x] 유저가 게시글 작성 및 수정  접근시 로그인 여부를 검사한다.
+- [x] 본인 글에 대해서만 수정 / 삭제가 가능하다.
+- [x] 메인페이지에 검색 기능이 구현되어야 한다. input 박스에 내용을 적고 검색 버튼을 누르면 해당 문자가 포함된 게시글이 리스트업 되어야 한다.
+- (추가 기능이나 구현기능설명이 필요한 경우 서술)
+
 ## 미비사항 or 막힌 부분
-- 결과값만 출력되어 html을 활용하려했으니 생각처럼 되지않음
-
-## MVC 패턴
-- 모델-뷰-컨트롤러의 약자로, 디자인 패턴의 하나이다. 비즈니스 처리 로직과 사용자 인터페이스를 구분시켜 서로 영향없이 개발이 가능하다는 장점이 있다(MVC패턴).
-- 모델(Model)은 어플리케이션이 "무엇"을 할 지에 대한 정의한다. 처리되는 데이터, 데이터베이스, 내부 알고리즘 등 내부 비즈니스에 관한 로직의 처리를 수행한다. 즉 사용자에게 보이지 않는 로직.
-- 뷰(View)는 말 그대로 사용자에게 보여지는 영역이다. JSP등 사용자 인터페이스를 담당한다.
-- 컨트롤러(Controller)는 모델에게 "어떻게"할 것인지를 알려주며, 모델과 뷰 사이를 연결하는 역할을 한다. 사용자의 입출력을 받아 데이터를 처리한다.
-
-## 스프링에서 의존성 주입(DI) 방법
-1. Field Injection
-
-Field Injection은 의존성을 주입하고 싶은 필드에 @Autowired 어노테이션을 붙여주면 의존성이 주입 됨
-@Controller
-public class ArticleController {
-
-    @Autowired
-    private ArticleService articleService;
-
-}
-
-2. Setter based Injection
-setter메서드에 @Autowired 어노테이션을 붙여 의존성을 주입하는 방식
-
-@Controller
-public class ArticleController {
-
-    private ArticleService articleService;
-    
-    @Autowired
-    public void setArticleService(ArticleService articleService){
-    	this.articleService = ariticleService;
-    }
-
-}
-
-3. Constructor based Injection
-생성자를 사용하여 의존성을 주입하는 방식.
-lombok은 final로 선언된 필드로 생성자를 만들어줌
-
-@RequiredArgsConstructor
-
-@Controller
-public class ArticleController {
-
-    private final ArticleService articleService;
-    
-    public ArticleController(ArticleService articleService){
-    	this.articleService = articleService;
-    }
-
-}
+- 오픈북 테스트였으나 진행도가 늦었음.
